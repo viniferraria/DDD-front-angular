@@ -1,0 +1,19 @@
+<div>
+    <p>form works!</p>
+    <div *ngIf='animal.name; else loadingBlock'>
+        <fieldset>
+            <form [formGroup]='animalForm' (ngSubmit)="onSubmit(animalForm.value)">
+                <div>
+                    <label for='name'>Name</label>
+                    <input id='name' type='text' formControlName='name'>
+                </div>
+                <div>
+                    <label for='specie'>Specie</label>
+                    <input id='specie' type='text' formControlName='specie'>
+                </div>
+                <button type='submit'>Send</button>
+            </form>
+        </fieldset>
+    </div>
+    <ng-template #loadingBlock>Loading</ng-template>
+</div>

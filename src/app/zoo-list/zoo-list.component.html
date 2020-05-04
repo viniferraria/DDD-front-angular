@@ -1,0 +1,36 @@
+<div>
+    <div>
+        <p>zoo-list works!</p>
+    </div>
+    <div *[hidden]="!isLoading">
+        <h1>LOADING...</h1>
+    </div>
+    <div class=table *ngIf="animals && !isLoading">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Specie</th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let animal of animals;">
+                    <td>{{ animal.id }}</td>
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.specie }}</td>
+                    <button>
+						<a [title]="animal.id + animal.name"
+						[routerLink]="['/form', animal.id]">
+							Details
+						</a>
+					</button>
+                    <button (click)="edit(animal)">Edit</button>
+                    <button (click)="remove(animal)">Delete</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
