@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import IZoo from './zoo';
 
 import {
-	fetchTableUrl,
-	// bulkUrl,
-    // createUrl,
-    deleteUrl,
-	// editUrl,
-	getByIdUrl 
+  fetchTableUrl,
+// bulkUrl,
+  createUrl,
+  deleteUrl,
+  editUrl,
+  getByIdUrl
 } from './constants';
 import { Observable } from 'rxjs';
 
@@ -16,33 +16,33 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ZooService {
-	// items = [];
+// items = [];
   constructor(
-	  private http: HttpClient
+    private http: HttpClient
   ) { }
 
-	fetchTable(): Observable<IZoo[]> {
-		return this.http.get<IZoo[]>(fetchTableUrl);
-  	}
+  fetchTable(): Observable<IZoo[]> {
+    return this.http.get<IZoo[]>(fetchTableUrl);
+  }
 
 //   sendFile() {
 // 	return this.http.post());
 //   }
 
-//   createAnimal() {
-// 	return this.http.post(createUrl));
-//   }
+  createAnimal({ body }) {
+    return this.http.post(createUrl, body);
+  }
 
-  	deleteAnimal({ id }) {
-		return this.http.delete(deleteUrl({ id }));
-  	}
+  deleteAnimal({ id }) {
+    return this.http.delete(deleteUrl({ id }));
+  }
 
-//   editAnimal({ id }) {
-// 	return this.http.put(editUrl({ id }), body);
-//   }
-  
-	getById({ id }) {
-		return this.http.get<IZoo>(getByIdUrl({ id }));
-	}
+  editAnimal({ id, body }) {
+    return this.http.put(editUrl({ id }), body);
+  }
+
+  getById({ id }) {
+    return this.http.get<IZoo>(getByIdUrl({ id }));
+  }
 
 }

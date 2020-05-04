@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ZooService } from '../zoo.service';
 
 @Component({
   selector: 'app-create-form',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private zooService: ZooService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  createAnimal({ name, specie }) {
+    this.zooService.createAnimal({body: { name, specie }})
+    .subscribe( _ => console.log('created'));
   }
 
 }

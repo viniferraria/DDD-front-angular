@@ -8,5 +8,4 @@ const deleteUrl = ({ id }) => `${baseUrl}/${id}`;
 const editUrl = ({ id }) => `${baseUrl}/update/${id}`;
 const getByIdUrl = ({ id }) => `${baseUrl}/${id}`;
 
-
 export { fetchTableUrl, bulkUrl, createUrl, deleteUrl, editUrl, getByIdUrl };

@@ -1,5 +1,5 @@
 export default interface IZoo {
-  id: number;
+  id?: any;
   name: string;
   specie: string;
 }

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
+import { DetailsFormComponent } from './details-form/details-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     ZooListComponent,
     FormComponent,
     CreateFormComponent,
-    EditFormComponent
+    EditFormComponent,
+    DetailsFormComponent
   ],
   imports: [
     BrowserModule,

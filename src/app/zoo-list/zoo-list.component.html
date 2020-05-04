@@ -1,7 +1,4 @@
 <div>
-    <div>
-        <p>zoo-list works!</p>
-    </div>
     <div *[hidden]="!isLoading">
         <h1>LOADING...</h1>
     </div>
@@ -22,12 +19,15 @@
                     <td>{{ animal.name }}</td>
                     <td>{{ animal.specie }}</td>
                     <button>
-						<a [title]="animal.id + animal.name"
-						[routerLink]="['/form', animal.id]">
+						<a [routerLink]="['/details', animal.id]">
 							Details
 						</a>
 					</button>
-                    <button (click)="edit(animal)">Edit</button>
+                    <button>
+						<a [routerLink]="['/edit', animal.id]">
+							Edit
+						</a>
+					</button>
                     <button (click)="remove(animal)">Delete</button>
                 </tr>
             </tbody>

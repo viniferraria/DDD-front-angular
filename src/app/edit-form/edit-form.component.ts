@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { Form}
+import { ZooService } from '../zoo.service';
+import IZoo from '../zoo';
 
 @Component({
   selector: 'app-edit-form',
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private zooService: ZooService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  saveChanges(formData: IZoo) {
+    this.zooService.editAnimal({ id: formData.id, body: formData})
+    .subscribe( _ => {
+        console.log('saved changes');
+    });
   }
 
 }
