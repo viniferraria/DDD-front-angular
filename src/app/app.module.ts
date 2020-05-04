@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { DetailsFormComponent } from './details-form/details-form.component';
+import { FileComponent } from './file/file.component';
+import { FileFormComponent } from './file-form/file-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DetailsFormComponent } from './details-form/details-form.component';
     FormComponent,
     CreateFormComponent,
     EditFormComponent,
-    DetailsFormComponent
+    DetailsFormComponent,
+    FileComponent,
+    FileFormComponent
   ],
   imports: [
     BrowserModule,
