@@ -8,7 +8,7 @@ import IZoo from '../zoo';
   styleUrls: ['./details-form.component.css']
 })
 export class DetailsFormComponent implements OnInit {
-  canEdit: boolean;
+  canEdit = false;
   constructor(
     private zooService: ZooService,
   ) { }
@@ -23,7 +23,7 @@ export class DetailsFormComponent implements OnInit {
   saveChanges(formData: IZoo) {
     this.zooService.editAnimal({ id: formData.id, body: formData})
     .subscribe( _ => {
-        console.log('saved changes');
+        alert('Animal updated');
     });
   }
 }

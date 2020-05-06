@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
 
   isDifferent() {
     const { name, specie } = this.animalForm.value;
-    return (name !== this.animal.name && specie !== this.animal.specie);
+    return (name !== this.animal.name || specie !== this.animal.specie);
   }
 
   onSubmit(formData) {

@@ -17,7 +17,7 @@ export class CreateFormComponent implements OnInit {
 
   createAnimal({ name, specie }) {
     this.zooService.createAnimal({body: { name, specie }})
-    .subscribe( _ => console.log('created'));
+    .subscribe( _ => alert('created'));
   }
 
 }

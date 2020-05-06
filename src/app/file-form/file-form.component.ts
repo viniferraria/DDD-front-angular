@@ -18,13 +18,11 @@ export class FileFormComponent implements OnInit {
   }
 
   private uploadFile(file) {
-    console.log('in');
     const formData = new FormData();
     formData.append('file', file);
     this.zooService.sendFile({ formData })
     .subscribe( _ =>  {
       this.finished = true;
-      console.log('done');
     });
   }
 
@@ -33,6 +31,7 @@ export class FileFormComponent implements OnInit {
     if (fileUpload.files.length > 0) {
       this.file = fileUpload.files[0];
       this.uploadFile(this.file);
+      alert('Uploaded');
       this.file = null;
     } else {
       console.log('Missing file');
