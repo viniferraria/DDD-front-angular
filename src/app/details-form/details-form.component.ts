@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ZooService } from '../zoo.service';
+import IZoo from '../zoo';
 
 @Component({
   selector: 'app-details-form',
@@ -7,16 +8,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details-form.component.css']
 })
 export class DetailsFormComponent implements OnInit {
-id: string;
-
+  canEdit: boolean;
   constructor(
-    private route: ActivatedRoute,
+    private zooService: ZooService,
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(param => {
-      this.id = param.get('id');
-    });
   }
 
+  enableEdit() {
+    this.canEdit = !this.canEdit;
+  }
+
+  saveChanges(formData: IZoo) {
+    this.zooService.editAnimal({ id: formData.id, body: formData})
+    .subscribe( _ => {
+        console.log('saved changes');
+    });
+  }
 }

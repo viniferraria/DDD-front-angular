@@ -1,18 +1,21 @@
 <div>
     <div *ngIf='animalForm; else loadingBlock'>
-        <fieldset>
-            <form [formGroup]='animalForm' (ngSubmit)="onSubmit(animalForm.value)">
-                <div>
-                    <label for='name'>Name</label>
-                    <input [readOnly]="!canEdit" id='name' type='text' formControlName='name'>
-                </div>
-                <div>
-                    <label for='specie'>Specie</label>
-                    <input [readOnly]="!canEdit" id='specie' type='text' formControlName='specie'>
-                </div>
-                <button [hidden]="!canEdit" type='submit'>Send</button>
-            </form>
-        </fieldset>
+        <form [formGroup]='animalForm' (ngSubmit)="onSubmit(animalForm.value)">
+            <mat-form-field appearance="fill">
+                <mat-label for='name'>Name</mat-label>
+                <input matInput placeholder="Ex: Simba" [readOnly]="!canEdit" id='name' type='text' formControlName='name'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label for='specie'>Specie</mat-label>
+                <input matInput placeholder="Ex: Lion" [readOnly]="!canEdit" id='specie' type='text' formControlName='specie'>
+            </mat-form-field>
+            <div>
+                <button *ngIf="canEdit" mat-raised-button color="primary" [disabled]="!this.isBtnEnabled()" type='submit'>Send</button>
+            </div>
+        </form>
     </div>
-    <ng-template #loadingBlock>Loading</ng-template>
+    <ng-template #loadingBlock>
+        <mat-spinner></mat-spinner>
+    </ng-template>
 </div>

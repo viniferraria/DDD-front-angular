@@ -10,6 +10,7 @@ import IZoo from '../zoo';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  animal: IZoo = { name: '', specie: '' };
   animalForm: FormGroup;
   // slug param
   id: number;
@@ -32,6 +33,7 @@ export class FormComponent implements OnInit {
     if (this.id) {
       this.zooService.getById({id: this.id})
       .subscribe((data: IZoo) => {
+        this.animal = data;
         this.createForm(data);
       });
     } else {
@@ -44,6 +46,20 @@ export class FormComponent implements OnInit {
       name,
       specie,
     });
+  }
+
+  isBtnEnabled() {
+    return this.isRequired() && this.isDifferent();
+  }
+
+  isRequired() {
+    const { name, specie } = this.animalForm.value;
+    return name.trim().length >= 4 && specie.trim().length >= 4;
+  }
+
+  isDifferent() {
+    const { name, specie } = this.animalForm.value;
+    return (name !== this.animal.name && specie !== this.animal.specie);
   }
 
   onSubmit(formData) {

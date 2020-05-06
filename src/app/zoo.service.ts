@@ -4,7 +4,7 @@ import IZoo from './zoo';
 
 import {
   fetchTableUrl,
-// bulkUrl,
+  bulkUrl,
   createUrl,
   deleteUrl,
   editUrl,
@@ -25,9 +25,9 @@ export class ZooService {
     return this.http.get<IZoo[]>(fetchTableUrl);
   }
 
-//   sendFile() {
-// 	return this.http.post());
-//   }
+  sendFile({ formData }) {
+    return this.http.post(bulkUrl, formData);
+  }
 
   createAnimal({ body }) {
     return this.http.post(createUrl, body);

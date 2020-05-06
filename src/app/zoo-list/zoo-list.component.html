@@ -1,36 +1,48 @@
-<div>
-    <div *[hidden]="!isLoading">
-        <h1>LOADING...</h1>
-    </div>
-    <div class=table *ngIf="animals && !isLoading">
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Specie</th>
-                    <th>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let animal of animals;">
-                    <td>{{ animal.id }}</td>
-                    <td>{{ animal.name }}</td>
-                    <td>{{ animal.specie }}</td>
-                    <button>
+<div class="page">
+    <div class=table *ngIf="!this.isLoading && animals.length > 0; else loadingTemplate">
+        <div id="table">
+            <table mat-table [dataSource]="animals" class="mat-elevation-z8">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let animal"> {{ animal.id }} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let animal"> {{ animal.name }} </td>
+                </ng-container>
+                <ng-container matColumnDef="specie">
+                    <th mat-header-cell *matHeaderCellDef> Specie </th>
+                    <td mat-cell *matCellDef="let animal"> {{ animal.specie }} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let animal">
+                        <button>
 						<a [routerLink]="['/details', animal.id]">
-							Details
+							<mat-icon>more</mat-icon>
 						</a>
 					</button>
-                    <button>
-						<a [routerLink]="['/edit', animal.id]">
-							Edit
-						</a>
+                        <button (click)="remove(animal)">
+						<mat-icon>delete</mat-icon>
 					</button>
-                    <button (click)="remove(animal)">Delete</button>
-                </tr>
-            </tbody>
-        </table>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div id="button-area">
+            <a id="add-button" mat-fab color="primary" class="add-button" routerLink="/create">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+    </div>
+    <ng-template #loadingTemplate ngif>
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
+    <div *ngIf="!this.isLoading && animals.length == 0">
+        <h1>No data found</h1>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <div>
-    <button>
-		<a [routerLink]="['/edit', this.id]">Edit</a>
+    <button (click)="this.enableEdit()">
+		<mat-icon>edit</mat-icon>
 	</button>
 </div>
-<app-form [canEdit]="false"></app-form>
+<app-form [canEdit]="this.canEdit" (emittedForm)="saveChanges($event)"></app-form>

@@ -1,5 +1,8 @@
 <div class="container">
-    <a routerLink="/">Home</a>
-    <a routerLink="/create">Create</a>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+        <button routerLink="" mat-menu-item>Home</button>
+        <button routerLink="/upload" mat-menu-item>Upload</button>
+    </mat-menu>
     <router-outlet></router-outlet>
 </div>

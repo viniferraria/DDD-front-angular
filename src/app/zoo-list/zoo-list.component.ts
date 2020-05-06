@@ -7,15 +7,15 @@ import { ZooService } from '../zoo.service';
   styleUrls: ['./zoo-list.component.css']
 })
 export class ZooListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'specie', 'actions'];
   animals;
-  isLoading;
+  isLoading = true;
 
   constructor(
     private zooService: ZooService,
   ) { }
 
   ngOnInit(): void {
-    this.isLoading = true;
     this.zooService.fetchTable()
     .subscribe(data => {
       this.animals = data;
@@ -29,5 +29,4 @@ export class ZooListComponent implements OnInit {
       this.animals = this.animals.filter(({ id }) => id !== outerId );
     });
   }
-
 }
