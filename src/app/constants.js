@@ -1,5 +1,5 @@
-let port = 44318;
-let baseUrl = `https://localhost:${port}/zoo`;
+// let port = 44318;
+let baseUrl = `https://animalback.azurewebsites.net/zoo`;
 
 const fetchTableUrl = `${baseUrl}`;
 const bulkUrl = `${baseUrl}/read`;
